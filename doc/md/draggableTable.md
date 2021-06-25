@@ -2,15 +2,15 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-24 16:03:35
+ * @LastEditTime: 2021-06-25 17:27:58
  * @LastEditors: weiwei
 -->
 # 表格拖拽
 > 拖拽排序、表头宽度拖拽
 
 ## 使用
-访问 <a href="/table">这里</a> 查看示例。
-<iframe src="/table" height="500px">table</iframe>
+访问 <a href="/#/table">这里</a> 查看示例。
+<iframe src="/#/table" height="500px">table</iframe>
 
 ```vue
 <template>

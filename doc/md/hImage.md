@@ -2,14 +2,13 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-25 17:25:32
+ * @LastEditTime: 2021-06-25 17:27:37
  * @LastEditors: weiwei
 -->
 # 图片加载组件
 > 图片加载调用示例
 
 ## 使用
-访问<a href="/#/himage">这里</a>查看示例。
 <iframe src="/#/himage" height="130px">himage</iframe>
 
 ```vue
