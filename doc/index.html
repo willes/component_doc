@@ -1,0 +1,98 @@
+<!--
+ * @Description: 
+ * @Autor: weiwei
+ * @Date: 2021-06-24 08:36:53
+ * @LastEditTime: 2021-06-25 08:55:51
+ * @LastEditors: weiwei
+-->
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>组件库说明文档</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">  
+  
+  <script src="https://unpkg.com/docsify-demo-box-vue/dist/docsify-demo-box-vue.min.js"></script>
+    <style>
+        iframe{
+            border:none !important;
+        }
+        ::-webkit-scrollbar{
+            width:6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+            background: rgba(0,0,0,0.15);
+            border-radius: 6px;
+        }
+        ::-webkit-scrollbar-track{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  <div id="app">
+    <img src="/doc/_media/favicon.png" alt="" style="position: absolute;top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  </div>
+  <script>
+    window.$docsify = {
+        coverpage: true, // 封面
+        loadSidebar: true, // 加载自定义侧边栏
+        auto2top: true, // 跳转到顶部
+        loadNavbar: true, // 加载导航栏
+        search: {
+            maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+            paths: ['navbar'], // or 'auto'
+            placeholder: '搜索',
+
+            noData: '没有找到搜索结果！',
+
+            // 搜索标题的最大层级, 1 - 6
+            depth: 2,
+
+            hideOtherSidebarContent: false, // 是否隐藏其他侧边栏内容
+
+            // 避免搜索索引冲突
+            // 同一域下的多个网站之间
+            namespace: 'website-1',
+
+            // 您可以提供一个正则表达式来匹配前缀。在这种情况下，
+            // 匹配到的字符串将被用来识别索引
+            pathNamespaces: /^(\/(md|crm|dh))?(\/(v1|v2))?/
+        }, // 搜索
+        alias: {
+            '/.*/_sidebar.md': '/_sidebar.md',
+            '/.*/_navbar.md': '/_navbar.md'
+        },
+        run: {
+      themeColor: 'green',
+      themeBorderColor: '#eee',
+      reverse: true
+    },
+        name: '组件库说明文档',
+        
+        repo: 'http://gitlab.facehand.cn/hdsaas/front-end/zztx_web_component',
+        copyCode: {
+            buttonText : '复制代码',
+            errorText  : '复制失败',
+            successText: '复制成功'
+        },
+        count:{
+            countable:true,
+            fontsize:'0.9em',
+            color:'rgb(90,90,90)',
+            language:'chinese'
+        }
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+</body>
+</html>
