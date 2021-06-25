@@ -2,7 +2,7 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-24 16:46:10
+ * @LastEditTime: 2021-06-25 17:22:10
  * @LastEditors: weiwei
 -->
 # 地图
@@ -11,7 +11,7 @@
 <font color="red"><b>注意：</b>因为地图核心文件为异步加载，调用腾讯地图 TMap 实例时请在 init 回调之后进行，否则会因为未加载完成而报错。</font>
 
 ## 使用
-<iframe src="/map" frameborder="0" height="400px">map</iframe>
+<iframe src="/#/map" frameborder="0" height="400px">map</iframe>
 
 ```vue
 <template>
