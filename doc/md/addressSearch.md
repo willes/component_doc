@@ -2,14 +2,13 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-28 16:49:53
+ * @LastEditTime: 2021-06-28 21:15:10
  * @LastEditors: weiwei
 -->
 # 地址搜索
 > 这个组件基于腾讯地图
 
 ## 使用
-访问<a href="/#/addressSearch">这里</a>查看示例。
 <iframe src="/#/addressSearch"></iframe>
 ```vue
 <template>

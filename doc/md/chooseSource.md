@@ -2,14 +2,15 @@
  * @Description: 上传及选择选择素材库资源组件
  * @Author: HenryLee
  * @Date: 2021-06-28 13:41:28
- * @LastEditTime: 2021-06-28 16:03:29
- * @LastEditors: HenryLee
+ * @LastEditTime: 2021-06-28 21:15:40
+ * @LastEditors: weiwei
 -->
 # 上传及选择素材库资源
 > 可上传资源至素材库或者选择素材库中的视频及图片素材
 
 ## 使用
-点击 <a href="/chooseSourceView" target="_blank">这里</a> 查看示例。
+
+<iframe src="/#/chooseSourceView" frameborder="0" height="380px">map</iframe>
 
 ```vue
 <template>

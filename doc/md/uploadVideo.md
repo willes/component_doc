@@ -1,9 +1,15 @@
+<!--
+ * @Description: 
+ * @Autor: weiwei
+ * @Date: 2021-06-25 16:07:21
+ * @LastEditTime: 2021-06-28 21:16:11
+ * @LastEditors: weiwei
+-->
 # 视频上传
 > 视频上传使用示例
 
 ## 使用
-访问<a href="/uploadVideo" target="_blank">这里</a>查看示例
-
+<iframe src="/#/uploadVideo" frameborder="0" height="380px">map</iframe>
 ```vue
 <template>
   <div>

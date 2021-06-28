@@ -2,14 +2,14 @@
  * @Description: 文本编辑组件
  * @Author: HenryLee
  * @Date: 2021-06-25 17:23:05
- * @LastEditTime: 2021-06-28 13:52:28
- * @LastEditors: HenryLee
+ * @LastEditTime: 2021-06-28 21:15:29
+ * @LastEditors: weiwei
 -->
 # 纯文本编辑器
 > 用于各种需要纯文本编辑的场景
 
 ## 使用
-<iframe src="/textEditorView" frameborder="0" height="280px">map</iframe>
+<iframe src="/#/textEditorView" frameborder="0" height="280px">map</iframe>
 
 ```vue
 <template>
