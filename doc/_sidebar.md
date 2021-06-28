@@ -2,8 +2,8 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-25 08:51:49
- * @LastEditors: weiwei
+ * @LastEditTime: 2021-06-28 16:06:29
+ * @LastEditors: HenryLee
 -->
 * 平台
   
@@ -21,6 +21,9 @@
     * [图片上传](/md/uploadImage)
     * [视频上传](/md/uploadVideo)
     * [同步通讯录](/md/addressBook)
+    * [纯文本编辑器](/md/textEditor)
+    * [上传选择素材](/md/chooseSource)
+    * [用户](/md/selectUser)
   
 * 订货
 
