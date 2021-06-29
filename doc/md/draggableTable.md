@@ -9,7 +9,6 @@
 > 拖拽排序、表头宽度拖拽
 
 ## 使用
-访问 <a href="/#/table">这里</a> 查看示例。
 <iframe src="/#/table" height="500px">table</iframe>
 
 ```vue

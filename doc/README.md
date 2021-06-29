@@ -20,17 +20,26 @@
 
 ## 使用
 这里是基础使用示例
+### Attributes
+| 参数 | 说明 | 类型 | 可选值 | 默认值
+| --- | --- | --- | --- | --- |
+| src | 图片的地址  | String | - | - |
+| fit	| 确定图片如何适应容器框 | String | fill / contain / cover / <br> none / scale-down | - |
+| alt	| 原生 alt| String | - | - |
+| lazy	| 是否开启懒加载	| boolean | - | false |
+| z-index	| 设置图片预览的 z-index		| Number | - | 2000 |
 
-### Options
-这里是 props 的说明
-| 名称 | 类型 | 默认 | 说明 |
-| --- | --- | --- | --- |
-|  |  |  |  |
 
-### Emits
-这里是回调方法
-| 名称 | 返回值 | 说明 |
+### Events
+| 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
-|  |  |  |
-````
+| load | 图片加载成功触发	 | (e: Event) |
+| error	| 加载失败的内容 | (e: Error) |
+
+### Slots
+| 名称 | 说明 |
+| --- | --- |
+| loading | 图片未加载的占位内容 |
+| error	| 加载失败的内容 |
+| none	| 图片地址为空的内容 |
 
