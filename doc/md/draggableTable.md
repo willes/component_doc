@@ -2,7 +2,7 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-25 17:27:58
+ * @LastEditTime: 2021-07-01 10:08:34
  * @LastEditors: weiwei
 -->
 # 表格拖拽
@@ -43,7 +43,10 @@ export default {
 | isWidth | Boolean | true | 是否可以拖动表头宽度 |
 | replaceFields | Object | {  key: 'businessId',dataIndex: 'dataIndex'} | 表头和数据的默认 key 值 |
 
-### Emits
+### event
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
-| draggable | {data,source,index} | 拖拽后的数据结果集 |
+| draggable | 拖拽后的数据结果集  | data,source,index |
+| row-click | 当某一行被点击时会触发该事件 | record, index |
+| row-contextmenu | 当某一行被鼠标右键点击时会触发该事件 | record, index |
+| row-dblclick | 当某一行被双击时会触发该事件 | record, index |
