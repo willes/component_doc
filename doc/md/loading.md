@@ -2,7 +2,7 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-24 15:36:08
+ * @LastEditTime: 2021-07-02 10:06:01
  * @LastEditors: weiwei
 -->
 # Loading 加载
@@ -36,7 +36,7 @@
   <div
     v-loading="loading"
     h-loading-text="拼命加载中"
-    h-loading-spinner="el-icon-loading"
+    h-loading-spinner="loading"
     h-loading-background="rgba(0, 0, 0, 0.8)"
     >
   </div>
