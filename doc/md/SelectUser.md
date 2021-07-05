@@ -7,11 +7,6 @@
 访问<a href="/#/selectUser" target="_blank">这里</a>查看示例。
 
 ### Attributes
-| 名称 | 类型 | 默认 | 说明 |
-| --- | --- | --- | --- |
-| value | Array | [] | 暂定为一个数组 |
-| visible | Boolean | false | 显示隐藏 |
-| loadData | Function |||
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值
 | --- | --- | --- | --- | --- |

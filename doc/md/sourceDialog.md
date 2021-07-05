@@ -36,7 +36,7 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |

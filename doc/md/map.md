@@ -33,7 +33,7 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
@@ -45,7 +45,7 @@ export default {
 | intLocation | Boolean | true | 创建的时候搜索默认的数据，即搜索 inputValue 的值 |
 | config | Object | {options} | 配置信息，查看 config 说明 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | position | 获取到的定位数据信息 |

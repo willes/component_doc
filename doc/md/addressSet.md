@@ -31,7 +31,7 @@ export default {
 
 <font color="red"><b>注意：</b>该组件需要传入对应的接口地址或接口方法，未内置默认的接口请求地址或方法。</font>
 
-### Options
+### Attributes
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | form | Object | { address: '', area: [] } | 组件的表单数据 |
@@ -41,7 +41,7 @@ export default {
 | requestApu | Object | { list: null, byName: null } | 封装好的请求方法 |
 | text | String | '修改' | 按钮显示文字 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | ok | { address<String>, area<Array> } | 回调方法 |

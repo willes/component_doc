@@ -23,7 +23,7 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 
 | 名称 | 必填 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- | --- |

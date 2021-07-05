@@ -10,6 +10,7 @@
 
 ## 使用
 <iframe src="/#/addressSearch"></iframe>
+
 ```vue
 <template>
   <div>
@@ -31,10 +32,9 @@ export default {
   }
 }
 </script>
-
 ```
 
-### Options
+### Attributes
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | value/v-model | String | '' | 值 |
@@ -42,7 +42,7 @@ export default {
 | showBtn | Boolean | true | 是否显示按钮 |
 | disabled | Boolean | false | 是否禁用 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | Object | 选中的位置信息 |

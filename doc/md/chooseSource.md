@@ -52,7 +52,7 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
@@ -66,7 +66,7 @@ export default {
 | isDelete | Boolean | true | 预览列表是否显示删除图标，isPreview为true时有效 |
 | isMove | Boolean | true | 预览列表是否支持拖拽排序，isPreview为true时有效 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | Array | 确定选择资源后触发，返回选中的素材库资源数组 |

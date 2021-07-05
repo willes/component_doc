@@ -10,6 +10,7 @@
 
 ## 使用
 <iframe src="/#/uploadVideo" frameborder="0" height="380px">map</iframe>
+
 ```vue
 <template>
   <div>
@@ -45,7 +46,7 @@ export default {
 
 <font color="red"><b>注意：</b> 因为上传最后需要调用接口将文件数据实际的保存入库，所以需要在完成之后手动调用 save 方法保存，该方法将会返回保存的数据。</font>
 
-### EmitS
+### Events
 
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |

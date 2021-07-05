@@ -62,9 +62,10 @@
   }
 </script>
 ```
+
 <font color="red"><b>注意：</b> 组件仅提供change事件或者input事件返回组件值，其他需要获取组件值的场景可使用ref获取组件的textValue。</font>
 
-### Options
+### Attributes
 
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
@@ -74,7 +75,7 @@
 | placeholder | String | '请输入' | 文本域默认占位文字 |
 | textareaHeight | Number |  | 文本域高度，不传入时文本域高度自适应 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | Object | 样式改变或者文本域失焦时返回文本值 |

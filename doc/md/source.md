@@ -22,7 +22,7 @@ export default {
 </script>
 ```
 
-### Options 
+### Attributes 
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | model | Number | 1 | 使用的模式，默认页面层，2表示弹窗层 |

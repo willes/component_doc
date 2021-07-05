@@ -14,6 +14,7 @@
 <iframe src="/#/table" height="500px">table</iframe>
 
 ### 常规用法
+
 ```vue
 <template>
   <draggable-table @draggable="handleDraggable" />
@@ -126,7 +127,7 @@ export default {
 | isWidth | Boolean | true | 是否可以拖动表头宽度 |
 | replaceFields | Object | {  key: 'businessId',dataIndex: 'dataIndex'} | 表头和数据的默认 key 值 |
 
-### event
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | draggable | 拖拽后的数据结果集  | data,source,index |

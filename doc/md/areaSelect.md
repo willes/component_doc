@@ -35,7 +35,7 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | value/v-model | Array | [] | 省市区的 code 数组 |
@@ -47,7 +47,7 @@ export default {
 | loadData | Function | null | 请求方法 |
 | dealData | Boolean | false | 当使用 loadData 方法时，返回的数据是否经过处理 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | selectData, { province, city, district } | 选中的数据数组以及详细的数据信息 |

@@ -20,6 +20,7 @@
     * [素材库页面](/md/source)
     * [图片上传](/md/uploadImage)
     * [视频上传](/md/uploadVideo)
+    * [附件上传](/md/uploadAttachment)
     * [同步通讯录](/md/addressBook)
     * [纯文本编辑器](/md/textEditor)
     * [上传选择素材](/md/chooseSource)

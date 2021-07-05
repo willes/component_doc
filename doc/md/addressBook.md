@@ -27,13 +27,13 @@ export default {
 </script>
 ```
 
-### Options
+### Attributes
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | visible | Boolean | false | 显示弹窗 |
 | auto | Boolean | false | 是否有权限 |
 
-### Emits
+### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | success | '' | 成功的回调 |

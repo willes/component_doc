@@ -2,7 +2,7 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-25 17:27:37
+ * @LastEditTime: 2021-07-05 09:22:09
  * @LastEditors: weiwei
 -->
 # 图片加载组件
@@ -94,8 +94,21 @@ export default {
 }
 </script>
 
-```
+HImage 可以使用api的形式调用
 
+```javascript
+import { HImage } from '@handday/components'
+```
+调用时
+```javascript
+ HImage.api({
+      initialIndex: 1, // 当前默认选择的图片
+      urlList: ['https://t7.baidu.com/it/u=1280638388,4029210594&fm=193&f=GIF', 'https://t7.baidu.com/it/u=3834573254,663078055&fm=193&f=GIF'], // 图片地址
+      download (data) { // 下载按钮事件
+        console.log(data)
+      }
+    })
+```
 ### Attributes
 | 参数 | 说明 | 类型 | 可选值 | 默认值
 | --- | --- | --- | --- | --- |
@@ -104,7 +117,7 @@ export default {
 | alt	| 原生 alt| String | - | - |
 | lazy	| 是否开启懒加载	| boolean | - | false |
 | z-index	| 设置图片预览的 z-index		| Number | - | 2000 |
-
+| preview-src-list | 开启图片预览功能 |	Array	|
 
 ### Events
 | 事件名称	 | 说明 | 回调参数 |
