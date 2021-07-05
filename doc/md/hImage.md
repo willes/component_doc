@@ -2,7 +2,7 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-07-05 09:22:09
+ * @LastEditTime: 2021-07-05 09:29:18
  * @LastEditors: weiwei
 -->
 # 图片加载组件
@@ -93,7 +93,7 @@ export default {
   }
 }
 </script>
-
+```
 HImage 可以使用api的形式调用
 
 ```javascript
