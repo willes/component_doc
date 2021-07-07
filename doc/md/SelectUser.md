@@ -1,10 +1,96 @@
 # 选择人员
-
-# 功能未完成，但是方法可引用。
+> 目前正常使用，异步加载，点聚合模式还在实现中
 
 ## 使用
 
 访问<a href="/#/selectUser" target="_blank">这里</a>查看示例。
+
+```vue
+<template>
+  <div>
+    <select-user v-model="selectValue" :replaceFields="{ children: 'children' }" @change="handleChange" :loadData="loadData" @ok="handleOk" :visible.sync="visible" dataType="mix" multiple></select-user>
+  </div>
+</template>
+
+<script>
+import { SelectUser } from '@handday/components'
+
+export default {
+  name: 'SelectUsers',
+  components: {
+    SelectUser
+  },
+  data () {
+    return {
+      loadData: null,
+      visible: false,
+      selectValue: []
+    }
+  },
+  mounted() {
+    this.handleAddEmps()
+  },
+  methods: {
+    handleOk(result, closeFn) {
+      console.log(result)
+    },
+    handleChange(result, selectList) {
+      console.log(result)
+    },
+    /**
+     * 模拟加载方法
+     * 添加负责人弹窗开启
+     * */
+    handleAddEmps (item) {
+      this.loadData = (node) => {
+        return new Promise((resolve, reject) => {
+          const length = Math.floor(Math.random() * 10 + 1)
+          const getData = (len) => {
+            let data = []
+            for(let i = 0; i < len; i++) {
+              const id = `${Math.floor(Math.random() * 1000000000000)}`
+              const type = Math.floor(Math.random() * 10) % 2
+              if (type) {
+                data.push({
+                  corpId: 10001,
+                  departmentId: id,
+                  parentId: item && item.parentId || 0,
+                  level: item && item.level + 2 || 1,
+                  name: `${Math.floor(Math.random() * 100000)}部`
+                })
+              } else {
+                data.unshift({
+                  name: `${Math.floor(Math.random() * 100000)}人`,
+                  businessId: id,
+                  avatar: 'https://t7.baidu.com/it/u=1595072465,3644073269&fm=193&f=GIF'
+                })
+              }
+            }
+            const parent = {
+              corpId: 10001,
+              departmentId: `${Math.floor(Math.random() * 1000000000000)}`,
+              parentId: 0,
+              level: item && item.level || 1,
+              name: `1部`,
+              children: data
+            }
+            if (typeof(node) === 'string') {
+              return [parent]
+            }
+            return data
+          }
+          setTimeout(() => {
+            resolve(getData(length))
+          }, 1000)
+        })
+      }
+      this.visible = true
+    }
+  }
+}
+</script>
+
+```
 
 ### Attributes
 
@@ -23,3 +109,12 @@
 | beforeClose | 关闭前的回调 | Function | result, close | - |
 | ok | 关闭窗口 | Function | result | - |
 | changeBtn | 替换和追加的按钮选项 | Boolean | - | false |
+| onlyDept | 是否只显示部门 | Boolean | - | false |
+| point | 点聚合模式 | Boolean | - | false |
+| isSync | 异步加载 | Boolean | - | false |
+
+### Events
+| 事件名称	 | 说明 | 回调参数 |
+| --- | --- | --- |
+| ok | 确定按钮 | (e: Event, close) |
+| change | 数据发生改变 | result, Object |

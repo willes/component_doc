@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0dd0e6"],{8080:function(n,o,t){"use strict";t.r(o);var c=function(){var n=this,o=n.$createElement,t=n._self._c||o;return t("div",[t("icon-font-box",{attrs:{type:"icon_classification"}})],1)},e=[],i=t("ce78"),s={name:"DemoIconFont",components:{IconFontBox:i["IconFontBox"]}},a=s,l=t("2877"),u=Object(l["a"])(a,c,e,!1,null,null,null);o["default"]=u.exports}}]);
+//# sourceMappingURL=chunk-2d0dd0e6.d4f30ea0.js.map
