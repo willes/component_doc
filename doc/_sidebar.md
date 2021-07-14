@@ -26,6 +26,7 @@
     * [上传选择素材](/md/chooseSource)
     * [选择用户](/md/selectUser)
     * [选择部门](/md/selectDept)
+    * [行省略](/md/ellipsisTip)
   
 * 订货
 
