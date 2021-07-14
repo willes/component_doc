@@ -24,7 +24,8 @@
     * [同步通讯录](/md/addressBook)
     * [纯文本编辑器](/md/textEditor)
     * [上传选择素材](/md/chooseSource)
-    * [用户](/md/selectUser)
+    * [选择用户](/md/selectUser)
+    * [选择部门](/md/selectDept)
   
 * 订货
 

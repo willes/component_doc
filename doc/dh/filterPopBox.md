@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: larou
  * @Date: 2021-06-30 18:40:30
- * @LastEditTime: 2021-06-30 19:05:06
+ * @LastEditTime: 2021-07-09 09:17:10
  * @LastEditors: larou
 -->
 # 列表筛选：支持搜索、单选、多选、数字范围、时间范围
@@ -13,6 +13,7 @@
 | column | 表格列数据对象 | Object	 | - | {} |
 | placeholder | 顶部搜索placeholder | String | - | '请输入搜索关键字' |
 | type | 区分类型 1单选 2多选 3树形结构 4关键字搜索 5数字范围 6时间范围 | Number | - | 1 |
+| treeData | 树形结构数据(type 为 3时需传入此数据) | Array | - | [] |
 
 ### Emits
 | 名称 | 返回值 | 说明 |

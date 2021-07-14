@@ -1,5 +1,7 @@
 # 选择人员
-> 目前正常使用，异步加载，点聚合模式还在实现中
+> 树形选择人员
+
+<font><b>切记注意数据结构</b></font>
 
 ## 使用
 
@@ -8,7 +10,7 @@
 ```vue
 <template>
   <div>
-    <select-user v-model="selectValue" :replaceFields="{ children: 'children' }" @change="handleChange" :loadData="loadData" @ok="handleOk" :visible.sync="visible" dataType="mix" multiple></select-user>
+    <select-user v-model="selectValue" :replaceFields="{ children: 'children' }" :loadData="loadData" @ok="handleOk" :visible.sync="visible" dataType="mix" multiple></select-user>
   </div>
 </template>
 
@@ -31,12 +33,18 @@ export default {
     this.handleAddEmps()
   },
   methods: {
-    handleOk(result, closeFn) {
+    handleOk(result) {
       console.log(result)
     },
-    handleChange(result, selectList) {
-      console.log(result)
-    },
+    /**
+     * result 返回的数据方法
+     *    selectedList 选中的数据
+     *    keyword 搜索时候的关键字
+     *    controlType 追加/替换
+     * cancel 关闭弹窗
+     * closeLoading 关闭 loading 状态
+     * */
+    beforeClose(result, cancel, closeLoading) {},
     /**
      * 模拟加载方法
      * 添加负责人弹窗开启
@@ -116,5 +124,11 @@ export default {
 ### Events
 | 事件名称	 | 说明 | 回调参数 |
 | --- | --- | --- |
-| ok | 确定按钮 | (e: Event, close) |
+| ok | 确定按钮 | (e: Event) |
 | change | 数据发生改变 | result, Object |
+
+### 注意事项
+
+point: 开启点聚合模式后，数据类型选择将会失效。
+isSync: 数据异步加载，搜索的时候会有些许问题，后续跟进修复。
+
