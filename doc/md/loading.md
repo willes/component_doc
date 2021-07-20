@@ -2,7 +2,7 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-07-02 10:06:01
+ * @LastEditTime: 2021-07-20 14:34:46
  * @LastEditors: weiwei
 -->
 # Loading 加载
@@ -31,7 +31,7 @@
 
 ### 自定义
 
-> 在绑定了v-loading指令的元素上添加element-loading-text属性，其值会被渲染为加载文案，并显示在加载图标的下方。类似地，element-loading-spinner和element-loading-background属性分别用来设定图标类名和背景色值。
+> 在绑定了v-loading指令的元素上添加h-loading-text属性，其值会被渲染为加载文案，并显示在加载图标的下方。类似地，h-loading-spinner和h-loading-background属性分别用来设定图标类名和背景色值。
 
 ```vue
 <template>
