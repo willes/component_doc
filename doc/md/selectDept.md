@@ -48,6 +48,7 @@ export default {
 | expandAll | 默认展开所有 | Boolean | - | true |
 | title | 标题 | String | - | 选择部门 |
 | beforeClose | 关闭前的回调 | Function | - | - |
+| mustMain | 是否必须有主部门 | Boolean | - | false |
 
 ### Events
 | 事件名称 | 说明 | 回调参数 |

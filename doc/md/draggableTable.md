@@ -126,6 +126,7 @@ export default {
 | isDraggable | Boolean | true | 是否可以拖拽排序 |
 | isWidth | Boolean | true | 是否可以拖动表头宽度 |
 | replaceFields | Object | {  key: 'businessId',dataIndex: 'dataIndex'} | 表头和数据的默认 key 值 |
+| topFirstLine | Boolean | false | 是否置顶首行 |
 
 ### Events
 | 名称 | 返回值 | 说明 |

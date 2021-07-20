@@ -2,8 +2,8 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-06-28 16:06:29
- * @LastEditors: HenryLee
+ * @LastEditTime: 2021-07-20 09:24:21
+ * @LastEditors: weiwei
 -->
 * 平台
   
@@ -27,6 +27,7 @@
     * [选择用户](/md/selectUser)
     * [选择部门](/md/selectDept)
     * [行省略](/md/ellipsisTip)
+    * [行业选择](/md/trade)
   
 * 订货
 
@@ -40,6 +41,9 @@
     
     * [数字-integer](/directives/integer)
   
+* mixins
+    * [表格-rowSelection](/mixins/tableSelection)
+
 * 关于
     
     * [首页](/)
