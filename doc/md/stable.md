@@ -2,16 +2,19 @@
  * @Description:
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-07-22 08:57:37
+ * @LastEditTime: 2021-07-22 10:02:49
  * @LastEditors: weiwei
 -->
 # STable
 > 集成 vue-draggable-resizable 来实现可伸缩列, 支持拖拽排序，全量支持a-table的属性和方法， 在此基础上增加了拖拽排序的回调函数(见：下方事件说明) `后续table功能会在这上面扩展`
 示例：
 <iframe src="/#/stable" height="600px">table</iframe>
+
 ### 可伸缩列
+
 在表格表头中拖拽改变宽度。
 `draggable` 为true时开启
+
 ```vue
 <template>
   <s-table
