@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0b68f8"],{"1e4b":function(n,e,t){"use strict";t.r(e);var c=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("div",[n._v("欢迎使用 @handday/components")])},o=[],a={name:"Antdv",created:function(){location.href="/doc"}},u=a,d=t("2877"),l=Object(d["a"])(u,c,o,!1,null,null,null);e["default"]=l.exports}}]);
-//# sourceMappingURL=chunk-2d0b68f8.37807fd6.js.map

@@ -132,6 +132,8 @@ export default {
 | immediate | 是否每次打开弹窗都要 init 一次 | Boolean | - | false | 
 | valueTimely | 是否即时更新 v-model | Boolean | - | false | 
 | autoCreate | 是否自动调用创建数据，也可通过 ref 手动调用 create 方法 | Boolean | - | false |
+| useBuilt | 是否使用内置的接口 | Boolean | - | false |
+| defaultBusinessId | 初始的部门 id，接口要求，必须有 id | String | - | '' |
 
 ### Events
 | 事件名称	 | 说明 | 回调参数 |
