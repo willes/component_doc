@@ -1,3 +1,10 @@
+<!--
+ * @Description: 
+ * @Autor: weiwei
+ * @Date: 2021-07-05 09:22:37
+ * @LastEditTime: 2021-08-19 10:22:44
+ * @LastEditors: weiwei
+-->
 # 素材库弹窗
 > 通过弹窗调用素材库
 
@@ -38,12 +45,14 @@ export default {
 
 ### Attributes
 
-| 名称 | 类型 | 默认 | 说明 |
-| --- | --- | --- | --- |
-| visible | Boolean | false | 是否显示弹窗 |
-| beforeClose | Function | null | 关闭弹窗前的回调, 返回值 result, handleCancel |
-| type | String | 'picture' | 弹窗类型，media 为视频 |
-| tabKey | Number | 2 | 弹窗的打开类型，是列表还是上传界面 |
-| selectImgNum | Number | 20 | 可选图片数量 |
-| selectVideoNum | Number | 20 | 可选视频数量 |
-| uploadImgNum | Number | 20 | 可同时上传的图片数量 |
+| 名称 | 类型 | 默认 | 说明 | 可选值 |
+| --- | --- | --- | --- | - |
+| visible | Boolean | false | 是否显示弹窗 |-|
+| beforeClose | Function | null | 关闭弹窗前的回调, 返回值 result, handleCancel |-|
+| type | String | picture | 弹窗类型，media 为视频 |-|
+| tabKey | Number | 2 | 弹窗的打开类型，是列表还是上传界面 |-|
+| selectImgNum | Number | 20 | 可选图片数量 |-|
+| selectVideoNum | Number | 20 | 可选视频数量 |-|
+| uploadImgNum | Number | 20 | 可同时上传的图片数量 |-|
+| isExpire | Number | 1 | 上传公有或私有素材 | 0/1|-|
+| cosType | Number | 1 | 查询公有或私有素材 | 0/1|-|

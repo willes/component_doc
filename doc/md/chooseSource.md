@@ -2,8 +2,8 @@
  * @Description: 上传及选择选择素材库资源组件
  * @Author: HenryLee
  * @Date: 2021-06-28 13:41:28
- * @LastEditTime: 2021-06-28 21:15:40
- * @LastEditors: weiwei
+ * @LastEditTime: 2021-08-11 14:13:08
+ * @LastEditors: HenryLee
 -->
 # 上传及选择素材库资源
 > 可上传资源至素材库或者选择素材库中的视频及图片素材
@@ -62,13 +62,16 @@ export default {
 | icon | String | '' | 自定义显示选择框的icon，可传入iconfont名称，不传使用默认icon |
 | tipText | String | '' | 显示选择框提示文字，不传则不显示 |
 | limit | Number | 1000 | 限制上传及选择的数量 |
-| isPreview | Boolean | false | 选择后是否显示预览列表，默认关闭 |
+| isPreview | Boolean | true | 选择后是否显示预览列表，默认开启 |
 | isDelete | Boolean | true | 预览列表是否显示删除图标，isPreview为true时有效 |
 | isMove | Boolean | true | 预览列表是否支持拖拽排序，isPreview为true时有效 |
+| showDown | Boolean | false | 大图预览是否支持下载，开启预览并支持点击放大时有效 |
+| tabKey | Number | 2 | 素材库弹窗弹出默认tab，默认打开上传窗口，可选值1：打开素材窗口 |
 
 ### Events
 | 名称 | 返回值 | 说明 |
 | --- | --- | --- |
 | change | Array | 确定选择资源后触发，返回选中的素材库资源数组 |
+| download | String | 点击大图预览下载按钮后触发，返回当前预览的素材图片url |
 
 

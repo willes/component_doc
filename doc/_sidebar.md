@@ -2,11 +2,11 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-24 08:36:53
- * @LastEditTime: 2021-07-22 09:52:04
- * @LastEditors: weiwei
+ * @LastEditTime: 2021-08-11 14:05:14
+ * @LastEditors: HenryLee
 -->
 * 平台
-  
+    * [开发规范](/md/develop)
     * [地图](/md/map)
     * [地图弹窗](/md/mapDialog)
     * [地址设置](/md/addressSet)
@@ -24,20 +24,27 @@
     * [附件上传](/md/uploadAttachment)
     * [同步通讯录](/md/addressBook)
     * [纯文本编辑器](/md/textEditor)
-    * [上传选择素材](/md/chooseSource)
+    * [上传及选择素材](/md/chooseSource)
     * [选择用户](/md/selectUser)
     * [选择部门](/md/selectDept)
     * [行省略](/md/ellipsisTip)
     * [行业选择](/md/trade)
     * [拖拽表格](/md/stable)
+    * [商品选择](/md/selectProduct)
   
 * 订货
 
     * [说明](/dh/index)
+    * [开发规范](/dh/develop)
+    * [混合下拉选择](/dh/mixSelect)
+    * [混合输入](/dh/mixSearch)
+    * [头部过滤组件](/dh/operation)
+    * [表头筛选](/dh/filterBox)
     
 * crm
 
     * [说明](/crm/index)
+    * [开发规范](/crm/develop)
 
 * 指令
     

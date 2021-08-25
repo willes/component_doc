@@ -118,6 +118,7 @@ import { HImage } from '@handday/components'
 | lazy	| 是否开启懒加载	| boolean | - | false |
 | z-index	| 设置图片预览的 z-index		| Number | - | 2000 |
 | preview-src-list | 开启图片预览功能 |	Array	|
+| prefix | 是否使用自定义前缀，传字符串将会做为前缀拼接到图片地址中 | [String, Boolean] | - | - |
 
 ### Events
 | 事件名称	 | 说明 | 回调参数 |

@@ -36,7 +36,6 @@
 | selectedRows | Object | 选中的行的集合 |
 | noSelectedRowKeys | Array | 未选中的行 key |
 | noSelectedRows | Object | 未选中的行 |
-| notSelectedList | Array | 未选中项的集合 |
 | selectType | String | 这个有两个固定值 currentPage 和 allPage，默认 currentPage，无需特意指定 |
 | rowSelection | Object | 可配置项为 Table 原生的 rowSelection 项，将会被注入到 computed 中的 rowSelection 中，请注意查看已设置的 rowSelection 项，防止代码覆盖 |
 | primaryKey | String | <font style="color:red;font-weight:bold;">此项默认值为 key，请注意自身获取数据的主键，否则无法找到主键将会报错。</font> |
@@ -47,9 +46,9 @@
 | --- | --- | --- |
 | rowSelection | Object | rowSelection |
 
-> 此选项仅说明已经被使用的参数，防止被误覆盖，未被使用的将不会被说明，
-
 #### rowSelection
+
+> 此选项仅说明已经被使用的参数，防止被误覆盖，未被使用的将不会被说明
 
 | 名称 | 类型 | 说明 |
 | --- | --- | --- |
