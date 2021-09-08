@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d2093b0"],{a7bf:function(e,n,a){"use strict";a.r(n);var l=function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("div",[a("SelectSaleArea",{on:{change:e.changeHandle}})],1)},c=[],t=a("ce78"),o={name:"selectSaleArea",components:{SelectSaleArea:t["SelectSaleArea"]},methods:{changeHandle:function(e){console.log(e)}}},r=o,s=a("2877"),u=Object(s["a"])(r,l,c,!1,null,null,null);n["default"]=u.exports}}]);
+//# sourceMappingURL=chunk-2d2093b0.96c68a28.js.map

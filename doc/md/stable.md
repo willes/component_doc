@@ -75,6 +75,7 @@
 | --- | --- | --- | --- | --- |
 | draggable | 是否开启表头宽度收缩  |  Boolean | - | false |
 | dragOption	| 是否开启表格拖拽排序 | Object | - | {handle: '.ant-table-row',animation: 150} |
+| sortList	| 排序，请注意必须包含 key | Array | - | [{}] |
 
 ### 事件 
 

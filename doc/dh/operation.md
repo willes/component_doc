@@ -141,8 +141,10 @@ export default {
 
 ### slots
 | 名称 | 说明 |
+| --- | --- |
 | default | 默认的插槽 |
 | other | 其它按钮，如新增按钮等 |
+| modal | 弹窗插槽，配置项为 modelConfig |
 
 ### Events
 | 名称 | 返回值 | 说明 |

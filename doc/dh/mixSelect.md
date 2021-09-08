@@ -32,6 +32,9 @@ export default {
 | type | Number | 0 | 加载类型 |
 | allowClear | Boolean | false | 是否允许删除 |
 | placeholder | String | - | placeholder |
+| width | String,Number | - | 宽度，可不传 |
+| list | Array | - | 选项列表 |
+| exclude | Array | - | 需要过滤掉的 id |
 
 #### type  
 | 值 | 说明 |

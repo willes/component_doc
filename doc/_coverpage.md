@@ -2,8 +2,8 @@
  * @Description: 
  * @Autor: weiwei
  * @Date: 2021-06-25 15:46:03
- * @LastEditTime: 2021-08-23 16:39:38
- * @LastEditors: weiwei
+ * @LastEditTime: 2021-08-26 15:28:02
+ * @LastEditors: HenryLee
 -->
 <!-- _coverpage.md -->
 
@@ -11,7 +11,7 @@
 
 # @handday/components
 
-### <a style="color: #fff; text-shadow: 0px 0px 5px #42b983;">当前版本 v0.0.96</a>
+### <a style="color: #fff; text-shadow: 0px 0px 5px #42b983;">当前版本 v0.0.99</a>
 > handday组件库文档
 
 - 开箱即用、功能完善、轻松上手

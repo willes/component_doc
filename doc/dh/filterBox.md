@@ -53,6 +53,7 @@ export default {
 | name | String | - | 组件名称 |
 | config | Object | - | 基础配置项 |
 | visible | Boolean | false | 指定情况下需要设置，参考 ** visible ** 特别说明，参考，与 :filter-dropdown-visible.sync 一致 |
+| list | Array | - | 传入自定义筛选列表 |
 
 #### name
 | 值 | 说明 |
@@ -69,6 +70,12 @@ export default {
 | prepared | 制单人 |
 | stockSync | 库存状态 |
 | paymentMode | 付款方式 |
+| exchangePayment | 应收应付 |
+| supplier | 供货商 |
+| customer | 客户 |
+| unit | 商品单位 |
+| brand | 商品品牌 |
+| tag | 商品标签 |
 
 #### config
 | 值 | 说明 |

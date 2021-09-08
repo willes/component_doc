@@ -31,6 +31,11 @@
     * [行业选择](/md/trade)
     * [拖拽表格](/md/stable)
     * [商品选择](/md/selectProduct)
+    * [销售区域](/md/selectSaleArea)
+    * [往来单位](/md/selectCustomer)
+    * [混合弹窗选择](/md/mixModal)
+    * [银行账户](/md/selectAccount)
+    * [混合支付](/md/mixPayment)
   
 * 订货
 
