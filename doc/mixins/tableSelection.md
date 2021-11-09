@@ -1,5 +1,5 @@
 # 表格扩展 mixins
-
+![img.png](../image/mixins-table-selection.png)
 使用示例查看 <a href="/#/table/checkbox">这里</a>
 
 <font style="color:red;font-size:24px;">请注意！请注意！请注意！此文件使用前请注意阅读以下内容！！！</font>  
@@ -67,6 +67,10 @@
 | handleSelectedClear | 清空选中项 |
 | getRowData | 获取选中行或者未选中行，默认获取选中行， 传 true 为未选中，68版本暂时没有这个功能 |
 
+### 内置方法，防止重复命名
+_generateKey // 生成选中的 key
+_generateNoSelectKey // 生成未选中的 key
+
 ### 使用示例（仔细阅读这里）
 > 这里展示的都是必须设置的选项  
 > 在数据加载完成后需要调用 this.dealSelectionCheckBox()  
@@ -123,229 +127,354 @@ export default {
 
 ```vue
 export default {
-  data() {
-    return {
-      tableData: [],
-      selectionContent: {
-        selectedRowKeys: [], // 选中的项
-        selectedRows: {}, // 选中的对象集合
-        noSelectedRowKeys: [], // 未选中的项
-        noSelectedRows: {}, // 未选中的对象集合
-        selectType: '', // 选择类型，当前页：currentPage  所有页：allPage
-        rowSelection: {}, // 原生的 rowSelection 项
-        primaryKey: 'skuId' // 主键值
-      },
-      pagination: {
-        total: 0,
-        pageSize: 30,
-        current: 1,
-        showQuickJumper: true,
-        showSizeChanger: true,
-        pageSizeOptions: ['30', '50', '100'],
-        showTotal: total => `总${total}条`
-      }
-    }
-  },
-  computed: {
-    selectOnIndeterminate () {
-      // 全选页的时候使用
-      return this.selectionContent.selectType === 'allPage' && !!this.selectionContent.noSelectedRowKeys.length
-    },
-    rowSelection () {
-      const that = this
-      return {
-        ...that.selectionContent.rowSelection,
-        selectedRowKeys: that.selectionContent.selectedRowKeys,
-        onChange: (selectedRowKeys, selectedRows) => {
-          console.log(selectedRowKeys, selectedRows, 'change')
-          const { primaryKey } = that.selectionContent
-          that.selectionContent.selectedRowKeys = selectedRowKeys
-          // 如果是所有的，需要操作未选中项的内容
-          const obj = that.selectionContent.noSelectedRows
-          const selectRow = that.selectionContent.selectedRows
-          let needUpdate = false // 判断是否需要更新未选中的数据
-          that.tableData.forEach(item => {
-            if (!selectedRowKeys.includes(item[primaryKey])) {
-              if (that.selectionContent.selectType === 'allPage') {
-                needUpdate = true
-                obj[item[primaryKey]] = item
-              }
-              delete selectRow[item[primaryKey]]
-            } else {
-              if (that.selectionContent.selectType === 'allPage') {
-                needUpdate = true
-                delete obj[item[primaryKey]]
-              }
-              selectRow[item[primaryKey]] = item
-            }
-          })
-          that.selectionContent.noSelectedRows = obj
-          that.selectionContent.selectedRows = selectRow
-          if (that.selectionContent.selectType === 'allPage' && needUpdate) {
-            that.generateNoSelectKey()
-          }
-        },
-        hideDefaultSelections: true,
-        selections: [
-          {
-            key: 'currentPage',
-            text: '当前页',
-            onSelect: select => {
-              console.log(select, 'currentPage')
-              if (that.selectionContent.selectType === 'allPage') {
-                // 如果之前是所有页，则清空为选项和已选数组对象
-               that.handleSelectedClear()
-              }
-              // 设置为当前页
-              that.selectionContent.selectType = 'currentPage'
-              const { primaryKey } = that.selectionContent
-              // 如果已经是当前页，需要取消全选
-              // 判断当前页是否处于半选状态
-              let isSelected = []
-              let noSelected = []
-              that.tableData.forEach(item => {
-                if (!that.selectionContent.selectedRowKeys.includes(item[primaryKey])) {
-                  noSelected.push(item)
-                } else {
-                  isSelected.push(item)
-                }
-              })
-              let obj = this.selectionContent.selectedRows
-              if ((isSelected.length && noSelected.length) || !isSelected.length) {
-                // 如果既有选中的，也有未选中的，则设置为全选
-                // 如果没有选中项，则设置为全选
-                noSelected.forEach(item => {
-                  obj[item[primaryKey]] = item
-                })
-              }
-              if (!noSelected.length) {
-                // 选中项，如果没有未选中的，则删除
-                let obj = that.selectionContent.selectedRows
-                isSelected.forEach(item => {
-                  delete obj[item[primaryKey]]
-                })
-              }
-              that.selectionContent.selectedRows = obj
-              // 生成选中数组
-              that.generateKey()
-            }
-          },
-          {
-            key: 'allPage',
-            text: '所有页',
-            onSelect: select => {
-              console.log(select, 'all-data')
-              if (that.selectionContent.selectType === 'allPage' && (this.selectionContent.selectedRowKeys.length || this.selectionContent.noSelectedRowKeys.length)) {
-                // 如果之前是所有页，则清空为选项和已选数组对象
-                that.handleSelectedClear()
-              } else {
-                that.selectionContent.selectType = 'allPage'
-                const { primaryKey } = that.selectionContent
-                that.tableData.forEach(item => {
-                  that.selectionContent.selectedRows[item[primaryKey]] = item
-                })
-              }
-              // 生成选中数组
-              that.generateKey()
-            }
-          }
-        ]
-      }
-    }
-  },
-  methods: {
-    /**
-     * 处理分页
-     * */
-    setPagination (obj) {
-      this.pagination = {
-        total: 0,
-        pageSize: 10,
-        current: 1,
-        showQuickJumper: true,
-        showSizeChanger: true,
-        pageSizeOptions: ['5', '10', '20'],
-        showTotal: total => `总${total}条`,
-        ...obj
-      }
-    },
-    /**
-     * 为 selection 添加额外的方法
-     * */
-    setRowSelection (row) {
-      this.selectionContent.rowSelection = row
-    },
-    /**
-     * 处理选中项
-     * */
-    dealSelectionCheckBox () {
-      console.log('dealSelectionCheckBox', this.selectionContent.selectType )
-      if (this.selectionContent.selectType === 'allPage') {
-        // 所有页时，切换分页会验证选中状态
-        this.tableData.forEach(item => {
-          try {
-            if (!this.selectionContent.selectedRows[item[this.selectionContent.primaryKey]] && !this.selectionContent.noSelectedRows[item[this.selectionContent.primaryKey]]) {
-              this.selectionContent.selectedRows[item[this.selectionContent.primaryKey]] = item
-            }
-          } catch (e) {
-            console.log(e)
-          }
-        })
-        this.generateKey()
-      }
-    },
-    /**
-     * 生成选中的 key 数组
-     * */
-    generateKey () {
-      const arr = []
-      for (const key in this.selectionContent.selectedRows) {
-        if (this.selectionContent.selectedRows.hasOwnProperty(key)) {
-          arr.push(key)
-        }
-      }
-      this.selectionContent.selectedRowKeys = arr
-    },
-    /**
-     * 生成未选中的 key
-     * */
-    generateNoSelectKey () {
-      const arr = []
-      for (const key in this.selectionContent.noSelectedRows) {
-        if (this.selectionContent.noSelectedRows.hasOwnProperty(key)) {
-          arr.push(key)
-        }
-      }
-      this.selectionContent.noSelectedRowKeys = arr
-    },
-    /**
-     * 清空选中项
-     * */
-    handleSelectedClear () {
-      this.selectionContent.selectedRowKeys = []
-      this.selectionContent.selectedRows = {}
-      this.selectionContent.noSelectedRowKeys = []
-      this.selectionContent.noSelectedRows = []
-    },
-    getRowData (status) {
-      // 默认获取选中行的数据
-      const arr = []
-      if (status) {
-        for (const key in this.selectionContent.noSelectedRows) {
-          if (this.selectionContent.noSelectedRows.hasOwnProperty(key)) {
-            arr.push(this.selectionContent.noSelectedRows[key])
-          }
-        }
-      } else {
-        for (const key in this.selectionContent.selectedRows) {
-          if (this.selectionContent.selectedRows.hasOwnProperty(key)) {
-            arr.push(this.selectionContent.selectedRows[key])
-          }
-        }
-      }
-      return arr
-   }
-  }
+data() {
+return {
+tableData: [],
+selectionContent: {
+selectedRowKeys: [], // 选中的项
+selectedRows: {}, // 选中的对象集合
+noSelectedRowKeys: [], // 未选中的项
+noSelectedRows: {}, // 未选中的对象集合
+selectType: '', // 选择类型，当前页：currentPage  所有页：allPage
+rowSelection: {}, // 原生的 rowSelection 项
+primaryKey: 'skuId' // 主键值
+},
+pagination: {
+total: 0,
+pageSize: 30,
+current: 1,
+showQuickJumper: true,
+showSizeChanger: true,
+pageSizeOptions: ['30', '50', '100'],
+showTotal: total => `总${total}条，每页显示${this.pagination.pageSize}条`
+},
+selectionConfig: {
+selections: true
+},
+tableSelection: {
+onChange: null,
+onSelect: null,
+onSelectAll: null,
+onSelectInvert: null,
+currentPage: null,
+allPage: null
 }
+}
+},
+computed: {
+selectOnIndeterminate () {
+// 全选页的时候使用
+return this.selectionContent.selectType === 'allPage' && !!this.selectionContent.noSelectedRowKeys.length && !!this.selectionContent.selectedRowKeys.length
+},
+rowSelection () {
+const that = this
+return {
+...that.selectionContent.rowSelection,
+selectedRowKeys: that.selectionContent.selectedRowKeys,
+onChange: (selectedRowKeys, selectedRows, ...args) => {
+const { primaryKey } = that.selectionContent
+if (that.selectionContent.selectType === 'allPage' && !selectedRowKeys.length) {
+// 如果是所有页并且全选中的数据已经没有了，默认为取消全选
+that.selectionContent.selectType = ''
+that.handleSelectedClear()
+return
+}
+that.selectionContent.selectedRowKeys = selectedRowKeys
+// 如果是所有的，需要操作未选中项的内容
+const obj = that.selectionContent.noSelectedRows
+const selectRow = that.selectionContent.selectedRows
+let needUpdate = false // 判断是否需要更新未选中的数据
+that.tableData.forEach(item => {
+if (!selectedRowKeys.includes(item[primaryKey])) {
+if (that.selectionContent.selectType === 'allPage') {
+needUpdate = true
+obj[item[primaryKey]] = item
+}
+delete selectRow[item[primaryKey]]
+} else {
+if (that.selectionContent.selectType === 'allPage') {
+needUpdate = true
+delete obj[item[primaryKey]]
+}
+selectRow[item[primaryKey]] = item
+}
+})
+that.selectionContent.noSelectedRows = obj
+that.selectionContent.selectedRows = selectRow
+if (that.selectionContent.selectType === 'allPage' && needUpdate) {
+that._generateNoSelectKey()
+}
+that.tableSelection.onChange && that.tableSelection.onChange(selectedRowKeys, selectedRows, ...args)
+},
+onSelect (row, flag, selectedList, event) {
+that.tableSelection.onSelect && that.tableSelection.onSelect(row, flag, selectedList, event)
+},
+onSelectAll (selected, selectedRows, changeRows) {
+that.tableSelection.onSelectAll && that.tableSelection.onSelectAll(selected, selectedRows, changeRows)
+},
+onSelectInvert (selectedRows) {
+that.tableSelection.onSelectInvert && that.tableSelection.onSelectInvert(selectedRows)
+},
+hideDefaultSelections: true,
+selections: that.selectionConfig.selections ? [
+{
+key: 'currentPage',
+text: '当前页',
+onSelect: select => {
+if (that.selectionContent.selectType === 'allPage') {
+// 如果之前是所有页，则清空为选项和已选数组对象
+that.handleSelectedClear()
+}
+// 设置为当前页
+that.selectionContent.selectType = 'currentPage'
+const { primaryKey } = that.selectionContent
+// 如果已经是当前页，需要取消全选
+// 判断当前页是否处于半选状态
+let isSelected = []
+let noSelected = []
+that.tableData.forEach(item => {
+if (!that.selectionContent.selectedRowKeys.includes(item[primaryKey])) {
+noSelected.push(item)
+} else {
+isSelected.push(item)
+}
+})
+let obj = this.selectionContent.selectedRows
+if ((isSelected.length && noSelected.length) || !isSelected.length) {
+// 如果既有选中的，也有未选中的，则设置为全选
+// 如果没有选中项，则设置为全选
+noSelected.forEach(item => {
+obj[item[primaryKey]] = item
+})
+}
+if (!noSelected.length) {
+// 选中项，如果没有未选中的，则删除
+let obj = that.selectionContent.selectedRows
+isSelected.forEach(item => {
+delete obj[item[primaryKey]]
+})
+}
+that.selectionContent.selectedRows = obj
+// 生成选中数组
+that._generateKey()
+}
+},
+{
+key: 'allPage',
+text: '所有页',
+onSelect: select => {
+if (that.selectionContent.selectType === 'allPage' && (that.selectionContent.selectedRowKeys.length || that.selectionContent.noSelectedRowKeys.length)) {
+// 如果之前是所有页，则清空为选项和已选数组对象
+that.handleSelectedClear()
+} else {
+that.selectionContent.selectType = 'allPage'
+const { primaryKey } = that.selectionContent
+that.tableData.forEach(item => {
+that.selectionContent.selectedRows[item[primaryKey]] = item
+})
+}
+// 生成选中数组
+that._generateKey()
+}
+}
+] : false
+}
+}
+},
+methods: {
+/**
+* 处理分页
+* */
+setPagination (obj) {
+this.pagination = {
+total: 0,
+pageSize: 10,
+current: 1,
+showQuickJumper: true,
+showSizeChanger: true,
+pageSizeOptions: ['5', '10', '20'],
+showTotal: total => `总${total}条`,
+...obj
+}
+},
+/**
+* 为 selection 添加额外的方法
+* */
+setRowSelection (row) {
+this.selectionContent.rowSelection = row
+},
+/**
+* 处理选中项
+* */
+dealSelectionCheckBox () {
+if (this.selectionContent.selectType === 'allPage') {
+// 所有页时，切换分页会验证选中状态
+this.tableData.forEach(item => {
+try {
+if (!this.selectionContent.selectedRows[item[this.selectionContent.primaryKey]] && !this.selectionContent.noSelectedRows[item[this.selectionContent.primaryKey]]) {
+this.selectionContent.selectedRows[item[this.selectionContent.primaryKey]] = item
+}
+} catch (e) {
+console.log(e)
+}
+})
+this._generateKey()
+}
+},
+/**
+* 生成选中的 key 数组
+* */
+_generateKey () {
+const arr = []
+for (const key in this.selectionContent.selectedRows) {
+if (this.selectionContent.selectedRows.hasOwnProperty(key)) {
+arr.push(key)
+}
+}
+this.selectionContent.selectedRowKeys = arr
+},
+/**
+* 生成未选中的 key
+* */
+_generateNoSelectKey () {
+const arr = []
+for (const key in this.selectionContent.noSelectedRows) {
+if (this.selectionContent.noSelectedRows.hasOwnProperty(key)) {
+arr.push(key)
+}
+}
+this.selectionContent.noSelectedRowKeys = arr
+},
+/**
+* 清空选中项
+* */
+handleSelectedClear () {
+this.selectionContent.selectedRowKeys = []
+this.selectionContent.selectedRows = {}
+this.selectionContent.noSelectedRowKeys = []
+this.selectionContent.noSelectedRows = []
+this.selectionContent.selectType = ''
+return this
+},
+/**
+* 获得行数据
+* */
+getRowData (status) {
+// 默认获取选中行的数据
+const arr = []
+if (status) {
+for (const key in this.selectionContent.noSelectedRows) {
+if (this.selectionContent.noSelectedRows.hasOwnProperty(key)) {
+arr.push(this.selectionContent.noSelectedRows[key])
+}
+}
+} else {
+for (const key in this.selectionContent.selectedRows) {
+if (this.selectionContent.selectedRows.hasOwnProperty(key)) {
+arr.push(this.selectionContent.selectedRows[key])
+}
+}
+}
+return arr
+},
+/**
+* 改变并清空
+* */
+setTableSelectType (type) {
+this.selectionContent.selectType = type
+this.handleSelectedClear()
+},
+/**
+* 设置选中的行
+* */
+setSelectRows (lst) {
+lst.forEach(item => {
+this.selectionContent.selectedRows[item[this.selectionContent.primaryKey]] = item
+})
+},
+/**
+* 设置 checkbox 选择项
+* */
+setSelectionStatus (status) {
+this.selectionConfig.selections = status
+},
+/**
+* 行点击
+* */
+rowClick (record) {
+console.log('单击', record)
+if (this.multiple) {
+if (this.selectionContent.selectedRowKeys.includes(record[this.baseReplaceFields.key])) {
+this.selectionContent.selectedRowKeys = this.selectionContent.selectedRowKeys.filter(item => item !== record[this.baseReplaceFields.key])
+delete this.selectionContent.selectedRows[record[this.baseReplaceFields.key]]
+} else {
+this.selectionContent.selectedRowKeys.push(record[this.baseReplaceFields.key])
+this.selectionContent.selectedRows[record[this.baseReplaceFields.key]] = record
+}
+} else {
+this.selectionContent.selectedRowKeys = [record[this.baseReplaceFields.key]]
+this.selectionContent.selectedRows = {
+[record[this.baseReplaceFields.key]]: record
+}
+}
+},
+/**
+* 行双击
+* */
+dbRowClick(record) {
+console.log('双击', record)
+// 处理是否有值，双击的情况下，选中当前行并进行处理
+if (!this.selectionContent.selectedRowKeys.includes(record[this.baseReplaceFields.key])) {
+this.selectionContent.selectedRowKeys.push(record[this.baseReplaceFields.key])
+this.selectionContent.selectedRows[record[this.baseReplaceFields.key]] = record
+}
+this.handleOk && this.handleOk()
+},
+/**
+* 处理传入的参数
+* */
+dealResult () {
+// 处理查询条件
+if (this.rules) {
+for (const key in this.rules) {
+if (this.rules.hasOwnProperty(key)) {
+const data = this.rules[key]
+const type = typeof data
+if (type === 'object') {
+// 如果数据是个对象，需要处理对应的数据到对应的值
+this.$refs[this.resultMap[key].ref].setData(data)
+this.searchResult[this.resultMap[key].key] = data.id
+this.disabled[key] = !!data.disabled
+console.log(data)
+} else {
+this.searchResult[this.resultMap[key]] = data
+}
+}
+}
+}
+// 设置默认值
+if (this.defaultValue) {
+this.selectionContent.selectedRowKeys = []
+if (this.defaultValue.constructor === Array) {
+// 如果是数组，要进行处理
+this.defaultValue.forEach(item => {
+this.selectionContent.selectedRowKeys.push(item[this.baseReplaceFields.key])
+this.selectionContent.selectedRows = {
+...this.selectionContent.selectedRows,
+[item[this.baseReplaceFields.key]]: item
+}
+})
+} else {
+this.selectionContent.selectedRowKeys = [this.defaultValue[this.baseReplaceFields.key]]
+this.selectionContent.selectedRows = {
+[this.defaultValue[this.baseReplaceFields.key]]: this.defaultValue
+}
+}
+}
+return this
+}
+}
+}
+
 
 ```

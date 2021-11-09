@@ -1,26 +1,34 @@
 # 选项操作栏
+![img.png](../_media/operation-un-select.png)
+![img.png](../_media/operation-select.png)  
 
 ## 使用
 > 使用参考项目下 components/operation/demo  
 ```vue
 <template>
   <div>
-    <OperationBox v-model="selectList" :optionList="optionList" :rowSelectKeys="rowSelectKeys" @optionClick="optionHandle" @change="changeHandle">
-      <StaticSelect v-model="searchResult.brand" :type="1" allowClear style="width:100px; margin-right:16px;" @change="(...args) => selectHandle('brand', ...args)" />
-      <StaticSelect v-model="searchResult.tag" :type="2" allowClear style="width:100px; margin-right:16px;" @change="(...args) => selectHandle('tag', ...args)" />
-      <StaticSelect v-model="searchResult.order" :type="3" allowClear style="width:100px;" @change="(...args) => selectHandle('order', ...args)" />
-    </OperationBox>
+    <d-operation-box v-model="selectList" :optionList="optionList" :rowSelectKeys="rowSelectKeys" @optionClick="optionHandle" @change="changeHandle">
+      <d-mix-select v-model="searchResult.brand" :type="1" allowClear style="width:100px; margin-right:16px;" @change="(...args) => selectHandle('brand', ...args)" />
+      <d-mix-select v-model="searchResult.tag" :type="2" allowClear style="width:100px; margin-right:16px;" @change="(...args) => selectHandle('tag', ...args)" />
+      <d-mix-select v-model="searchResult.order" :type="3" allowClear style="width:100px;" @change="(...args) => selectHandle('order', ...args)" />
+    </d-operation-box>
   </div>
 </template>
 
 <script>
-import OperationBox from '@/components/Operation/index.vue'
-import StaticSelect from '@/components/mixSelect/index'
+import { TableSelection, DMixSelect, DOperationBox } from '@handday/components'
 export default {
   name: 'OperationDemo',
   components: {
-    OperationBox,
-    StaticSelect
+    DOperationBox,
+    DMixSelect
+  },
+  mixins: [TableSelection],
+  provide () {
+    return {
+      selectionContent: this.selectionContent,
+      pagination: this.pagination
+    }
   },
   data () {
     return {
@@ -108,15 +116,31 @@ export default {
 | 名称 | 类型 | 默认 | 说明 |
 | --- | --- | --- | --- |
 | value | [String, Number] | - | 绑定值 |
-| rowSelectKeys | Array | - | 选中的项 |
+| selectList | Array | - | 选中的值 |
 | optionList | Array | - | 增加的按钮 |
 | moreSearch | Boolean | true | 更多搜索 |
 | modelConfig | Object | - | 更多弹窗 |
 
+### 必须参数
+参考示例代码 provide
+
 #### optionList
 
+```javascript
+[{
+    name: '',
+    key: '',
+    icon: '',
+    iconColor: '#378EFB',
+    textColor: '#378EFB',
+    size: 16,
+    loading: undefined
+}]
+```
+
 #### modelConfig
-```vue
+
+```javascript
 {
     title: '',
     okText: '确定',
@@ -130,13 +154,9 @@ export default {
     style: '',
     class: '',
     cancel: () => {
-    that.visible = false
+        that.visible = false
     }
 }
-```
-
-```vue
-[{ name: '', key: '', icon: '', iconColor: '#378EFB', textColor: '#378EFB', size: 16, loading: undefined }]
 ```
 
 ### slots

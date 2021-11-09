@@ -11,7 +11,7 @@
 
 # @handday/components
 
-### <a style="color: #fff; text-shadow: 0px 0px 5px #42b983;">当前版本 v0.0.99</a>
+### <a style="color: #fff; text-shadow: 0px 0px 5px #42b983;">当前版本 v0.2.16</a>
 > handday组件库文档
 
 - 开箱即用、功能完善、轻松上手
